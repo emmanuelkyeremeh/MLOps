@@ -9,7 +9,7 @@ def create_aws_creds_block():
     my_aws_creds_obj = AwsCredentials(
         aws_access_key_id=os.environ["ROOT_USER_ACCESS_KEY"],
         aws_secret_access_key=os.environ["ROOT_USER_SECRET_ACCESS_KEY"],
-        aws_session_token=None,  # replace this with token if necessary
+        aws_session_token=None,
         region_name="us-east-1"
     )
     my_aws_creds_obj.save(name="my-aws-creds", overwrite=True)
