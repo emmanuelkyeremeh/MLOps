@@ -6,6 +6,7 @@ from sklearn.pipeline import make_pipeline
 import mlflow
 from sklearn.metrics import mean_squared_error
 import sys
+from prefect import flow, task
 sys.path.append(
     "c:\\users\\user\\appdata\\local\\programs\\python\\python39\\lib\\site-packages")
 
@@ -17,6 +18,7 @@ def generate_uuids(n):
     return ride_ids
 
 
+@task
 def read_dataframe(filename: str):
     df = pd.read_parquet(filename)
 
@@ -28,6 +30,7 @@ def read_dataframe(filename: str):
     return df
 
 
+@task
 def prepare_dictionaries(df: pd.DataFrame):
     categorical = ['PULocationID', 'DOLocationID']
     df[categorical] = df[categorical].astype(str)
@@ -39,12 +42,14 @@ def prepare_dictionaries(df: pd.DataFrame):
     return dicts
 
 
+@task
 def load_model(run_id):
     logged_model = f"s3://mlfow-aws-bucket-remote/2/{run_id}/artifacts/model/"
     model = mlflow.pyfunc.load_model(logged_model)
     return model
 
 
+@flow
 def apply_model(input_file, run_id, output_file, output_dir):
     print(f'reading the data from {input_file}...')
     df = read_dataframe(input_file)
