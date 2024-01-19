@@ -143,3 +143,46 @@ Lastly, I generated a test suite and report using evidently as shown in the code
 <br/>
 
 ![Screenshot (118)](https://github.com/emmanuelkyeremeh/MLOps-project/assets/71068159/fb1e1a87-f523-40b6-8a9a-92f6e9877719)
+
+<br/>
+
+## Best Practices
+
+The `infrastructure` folder contains the `modules` folder and the `vars` folder as well as the `main.tf` , `variables.tf` and the `.terraform.lock.hcl` The main.tf file is root of the folder where an s3 bucket and two kinsesis data streams are created. The bucket and the data streams are referenced from the `kinesis` and `s3` folders inside of the `modules` folder.
+`main.tf` is shown below
+
+![Screenshot (120)](https://github.com/emmanuelkyeremeh/MLOps-project/assets/71068159/a6864862-6b60-472e-98be-a852c8ba8ac4)
+
+inside of `main.tf`, variables are initialized inside of `variables.tf` as shown below:
+
+![Screenshot (121)](https://github.com/emmanuelkyeremeh/MLOps-project/assets/71068159/fbe1fc82-a2de-4d35-99f8-973aa075050b)
+
+Terraform automatically creates `.terraform.locl.hcl` after initializing the project as shown
+
+![Screenshot (122)](https://github.com/emmanuelkyeremeh/MLOps-project/assets/71068159/d6a9d6cd-fd7e-442a-904a-a11edf714c36)
+
+The variables which were created in `variables.tf` have to be provided in the terminal when running the terraform workflow. to circumvent that, the required variables are created in the `stg.tfvars` inside of the `vars` folder as shown:
+
+![Screenshot (123)](https://github.com/emmanuelkyeremeh/MLOps-project/assets/71068159/22862e44-e8f0-40c2-856c-e00794c0f4d6)
+
+Both folders inside of the `modules` folder contain a `main.tf` and a `variables.tf` file.
+
+For the `kinesis` file, both files are shown below:
+
+### `main.tf`
+
+![Screenshot (124)](https://github.com/emmanuelkyeremeh/MLOps-project/assets/71068159/15d84eef-09b5-4ce4-b142-cc857b0992e3)
+
+### `variables.tf`
+
+![Screenshot (125)](https://github.com/emmanuelkyeremeh/MLOps-project/assets/71068159/50118b07-a6fc-41e3-935d-e2fd27cd8ce1)
+
+Finally for the `s3` folder, both files are shown below:
+
+### `main.tf`
+
+![Screenshot (126)](https://github.com/emmanuelkyeremeh/MLOps-project/assets/71068159/ccb31271-dc25-441c-bb6a-892ac405c0bb)
+
+### `variables.tf`
+
+![Screenshot (127)](https://github.com/emmanuelkyeremeh/MLOps-project/assets/71068159/b88fdd05-564d-4b40-a731-277efcf47b1a)
