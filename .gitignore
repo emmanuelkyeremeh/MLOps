@@ -9,3 +9,5 @@ preprocessor
 mlruns
 .vscode
 .env
+__pycache__
+infrastructure/.terraform
