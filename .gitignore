@@ -11,3 +11,5 @@ mlruns
 .env
 __pycache__
 infrastructure/.terraform
+
+
