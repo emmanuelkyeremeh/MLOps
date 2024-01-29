@@ -10,16 +10,20 @@
 
 ## Prefect Deployment
 
+
 - I created two MLflow runs using the Lasso model and XGBoost respectively
+
 
 ![Screenshot (69)](https://github.com/emmanuelkyeremeh/MLOps-project/assets/71068159/0ed83c6f-e0bb-4dc4-a4e2-323dcd4fac2b)
 ![Screenshot (68)](https://github.com/emmanuelkyeremeh/MLOps-project/assets/71068159/53725fdf-6201-410d-a42d-3d638160cc83)
+
 
 - I created `create_s3_bucket_block.py` which creates aws ans s3 credentials inside of prefect to facilitate the deployment of mlflow runs which have been converted to prefect flows
 
 ![Screenshot (70)](https://github.com/emmanuelkyeremeh/MLOps-project/assets/71068159/22317be9-f9c3-4dc3-82c1-445c99083a99)
 
 - I Added `orchestrate_s3.py` which converts the previously created mlflow runs into flows using prefect with the artifacts from each run stored inside an S3 bucket in AWS.
+
 
 ![Screenshot (78)](https://github.com/emmanuelkyeremeh/MLOps-project/assets/71068159/b85f35af-e148-49fa-b2e6-ae2093b68d68)
 ![Screenshot (77)](https://github.com/emmanuelkyeremeh/MLOps-project/assets/71068159/ae22b913-b78f-4342-9396-38a913357e1f)
@@ -48,6 +52,7 @@
 - I updated the `.gitignore` file as shown below:
 
   ![Screenshot (84)](https://github.com/emmanuelkyeremeh/MLOps-project/assets/71068159/484240b5-55c8-4c0e-8c69-098079137b76)
+
 
   <br/>
 
@@ -186,3 +191,4 @@ Finally for the `s3` folder, both files are shown below:
 ### `variables.tf`
 
 ![Screenshot (127)](https://github.com/emmanuelkyeremeh/MLOps-project/assets/71068159/b88fdd05-564d-4b40-a731-277efcf47b1a)
+
