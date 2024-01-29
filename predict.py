@@ -1,11 +1,13 @@
 import mlflow
+from dotenv import load_dotenv
+import os
 # from mlflow.tracking import MlflowClient
 
 from flask import Flask, request, jsonify
 
 app = Flask(__name__)
 
-RUN_ID = '9b4fcc81e5ba4ca698265705f41bc162'
+RUN_ID = os.environ["RUN_ID"]
 # MLFLOW_TRACKING_URI = 'http://127.0.0.1:5000'
 # mlflow.set_tracking_uri(MLFLOW_TRACKING_URI)
 logged_model = f"s3://mlfow-aws-bucket-remote/2/{RUN_ID}/artifacts/model"
