@@ -72,6 +72,7 @@
 
 - `score.py` takes in parameters including the mlflow run id, taxi type, year and month and downloads the data from the new york taxi dataset, prepares the data, downloads the model from the S3 bucket, creates a new dataframe which stores the results of the prediction and saves the dataframe as a parquet file in local storage.
 
+
 <br/>
 
 ## ML-Monitoring
@@ -191,4 +192,5 @@ Finally for the `s3` folder, both files are shown below:
 ### `variables.tf`
 
 ![Screenshot (127)](https://github.com/emmanuelkyeremeh/MLOps-project/assets/71068159/b88fdd05-564d-4b40-a731-277efcf47b1a)
+
 
