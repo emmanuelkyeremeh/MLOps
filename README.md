@@ -10,16 +10,20 @@
 
 ## Prefect Deployment
 
-- Created two MLflow runs using the Lasso model and XGBoost respectively
+
+- I created two MLflow runs using the Lasso model and XGBoost respectively
+
 
 ![Screenshot (69)](https://github.com/emmanuelkyeremeh/MLOps-project/assets/71068159/0ed83c6f-e0bb-4dc4-a4e2-323dcd4fac2b)
 ![Screenshot (68)](https://github.com/emmanuelkyeremeh/MLOps-project/assets/71068159/53725fdf-6201-410d-a42d-3d638160cc83)
 
-- Created `create_s3_bucket_block.py` which creates aws ans s3 credentials inside of prefect to facilitate the deployment of mlflow runs which have been converted to prefect flows
+
+- I created `create_s3_bucket_block.py` which creates aws ans s3 credentials inside of prefect to facilitate the deployment of mlflow runs which have been converted to prefect flows
 
 ![Screenshot (70)](https://github.com/emmanuelkyeremeh/MLOps-project/assets/71068159/22317be9-f9c3-4dc3-82c1-445c99083a99)
 
-- Added `orchestrate_s3.py` which converts the previously created mlflow runs into flows using prefect with the artifacts from each run stored inside an S3 bucket in AWS.
+- I Added `orchestrate_s3.py` which converts the previously created mlflow runs into flows using prefect with the artifacts from each run stored inside an S3 bucket in AWS.
+
 
 ![Screenshot (78)](https://github.com/emmanuelkyeremeh/MLOps-project/assets/71068159/b85f35af-e148-49fa-b2e6-ae2093b68d68)
 ![Screenshot (77)](https://github.com/emmanuelkyeremeh/MLOps-project/assets/71068159/ae22b913-b78f-4342-9396-38a913357e1f)
@@ -48,3 +52,23 @@
 - I updated the `.gitignore` file as shown below:
 
   ![Screenshot (84)](https://github.com/emmanuelkyeremeh/MLOps-project/assets/71068159/484240b5-55c8-4c0e-8c69-098079137b76)
+
+
+  <br/>
+
+  ## Batch Deployment
+
+  - `score.ipynb` contains a series of functions with the end goal of recording the prections from our model and storing that in dataframe
+
+    ![Screenshot (86)](https://github.com/emmanuelkyeremeh/MLOps-project/assets/71068159/5af1623f-a851-4748-b528-408ff31b12dd)
+    ![Screenshot (85)](https://github.com/emmanuelkyeremeh/MLOps-project/assets/71068159/3e74c882-a525-4ca2-b065-81e5561ebf88)
+
+- `score.ipynb` is then converted into script which I named `score.py`. This script is then modified into a prefect flow as shown in the code below
+
+  ![Screenshot (91)](https://github.com/emmanuelkyeremeh/MLOps-project/assets/71068159/b4ce6e9c-c4e0-4beb-934d-647e1f116caf)
+  ![Screenshot (89)](https://github.com/emmanuelkyeremeh/MLOps-project/assets/71068159/4f12b883-704d-4b3c-9479-8cdb6fa4f42d)
+  ![Screenshot (88)](https://github.com/emmanuelkyeremeh/MLOps-project/assets/71068159/b3b7c0c4-4901-4662-8d8d-4622f8ffeffd)
+  ![Screenshot (87)](https://github.com/emmanuelkyeremeh/MLOps-project/assets/71068159/1afb76aa-2e61-40e2-af35-779b40ad04a3)
+
+- `score.py` takes in parameters including the mlflow run id, taxi type, year and month and downloads the data from the new york taxi dataset, prepares the data, downloads the model from the S3 bucket, creates a new dataframe which stores the results of the prediction and saves the dataframe as a parquet file in local storage.
+
