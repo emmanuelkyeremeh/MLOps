@@ -10,7 +10,6 @@
 
 ## Prefect Deployment
 
-
 - I created two MLflow runs using the Lasso model and XGBoost respectively
 
 
@@ -71,4 +70,82 @@
   ![Screenshot (87)](https://github.com/emmanuelkyeremeh/MLOps-project/assets/71068159/1afb76aa-2e61-40e2-af35-779b40ad04a3)
 
 - `score.py` takes in parameters including the mlflow run id, taxi type, year and month and downloads the data from the new york taxi dataset, prepares the data, downloads the model from the S3 bucket, creates a new dataframe which stores the results of the prediction and saves the dataframe as a parquet file in local storage.
+
+
+<br/>
+
+## ML-Monitoring
+
+I created another model based on the nyc-taxi dataset. I used data from January 2022 instead of January and February 2021, which I used for previous models. I conducted exploratory data analysis and visualisation before training the model, which was a simple linear regression model. I saved the model locally and I generated a report using evidently. The code is shown below:
+
+![Screenshot (96)](https://github.com/emmanuelkyeremeh/MLOps-project/assets/71068159/bf828be5-d262-470b-baeb-2c2af73571f8)
+<br/>
+
+![Screenshot (95)](https://github.com/emmanuelkyeremeh/MLOps-project/assets/71068159/e918eced-c602-4334-a242-fd9df4b4d8ec)
+<br/>
+
+![Screenshot (106)](https://github.com/emmanuelkyeremeh/MLOps-project/assets/71068159/263b3c94-6895-4032-a29e-da77d1dd07d5)
+<br/>
+
+![Screenshot (105)](https://github.com/emmanuelkyeremeh/MLOps-project/assets/71068159/7c1639d1-d3b4-48c9-b1f8-92bbb2a1b03e)
+<br/>
+
+![Screenshot (104)](https://github.com/emmanuelkyeremeh/MLOps-project/assets/71068159/8fbed2ce-514c-4a83-a64b-baa9d273de74)
+<br/>
+
+![Screenshot (103)](https://github.com/emmanuelkyeremeh/MLOps-project/assets/71068159/ac54b90c-a937-4fc3-b1b4-eff27d55958f)
+<br/>
+
+![Screenshot (102)](https://github.com/emmanuelkyeremeh/MLOps-project/assets/71068159/ef97dacd-3b69-4730-b897-a96ffa5943f1)
+<br/>
+
+![Screenshot (101)](https://github.com/emmanuelkyeremeh/MLOps-project/assets/71068159/040f8758-3301-42f2-88dc-cb02d295d435)
+<br/>
+
+![Screenshot (100)](https://github.com/emmanuelkyeremeh/MLOps-project/assets/71068159/dbb45986-11b0-4912-9682-a179d180136d)
+<br/>
+
+![Screenshot (99)](https://github.com/emmanuelkyeremeh/MLOps-project/assets/71068159/e88b7948-5c69-4b1f-b2ea-91b75b205cdc)
+<br/>
+
+![Screenshot (98)](https://github.com/emmanuelkyeremeh/MLOps-project/assets/71068159/678e3b35-5b09-4712-b577-c4c4b7f0414d)
+<br/>
+
+![Screenshot (97)](https://github.com/emmanuelkyeremeh/MLOps-project/assets/71068159/50b136b6-717c-42f3-b061-e6e8c1fa8a78)
+
+<br/>
+
+I created two scripts `evidently_metrics_calculation.py` and `dummy_metrics_calculation.py`. both scripts create a database in my local postgres server but the former populates the database with random data while the latter populates the database with relevant data and from Februrary 2022 of the nyc taxi dataset and the script is converted into a prefect flow. The code for both scripts is shown below
+
+### `dummy_metrics_calculation.py`
+
+![Screenshot (108)](https://github.com/emmanuelkyeremeh/MLOps-project/assets/71068159/66afbea7-14a5-4498-92fb-16cb90c4bea7)
+![Screenshot (109)](https://github.com/emmanuelkyeremeh/MLOps-project/assets/71068159/263933c3-8fcc-4eaa-8ece-60a34b79de48)
+
+<br/>
+
+### `evidently_metrics_calculation.py`
+
+![Screenshot (112)](https://github.com/emmanuelkyeremeh/MLOps-project/assets/71068159/d1b480ca-5429-432b-86a6-1025529e3827)
+![Screenshot (110)](https://github.com/emmanuelkyeremeh/MLOps-project/assets/71068159/71e45c08-fd33-4fb9-9f2d-3778f8f05783)
+![Screenshot (114)](https://github.com/emmanuelkyeremeh/MLOps-project/assets/71068159/49c1e34d-f64f-4a00-a602-52f30b1f5e5a)
+![Screenshot (113)](https://github.com/emmanuelkyeremeh/MLOps-project/assets/71068159/072fc6c9-dd07-4572-baff-e0dbaac864f3)
+
+<br/>
+
+Lastly, I generated a test suite and report using evidently as shown in the code below
+
+![Screenshot (117)](https://github.com/emmanuelkyeremeh/MLOps-project/assets/71068159/820a3f27-5fb4-43cc-9533-3ab338623fd8)
+<br/>
+
+![Screenshot (116)](https://github.com/emmanuelkyeremeh/MLOps-project/assets/71068159/3dd2bab2-5639-46a2-9008-90310b1333e4)
+<br/>
+
+![Screenshot (115)](https://github.com/emmanuelkyeremeh/MLOps-project/assets/71068159/4e2bed1d-4618-4731-9668-0ea0ced2040c)
+<br/>
+
+![Screenshot (119)](https://github.com/emmanuelkyeremeh/MLOps-project/assets/71068159/88eb329a-4615-4b20-9bac-867b8771f582)
+<br/>
+
+![Screenshot (118)](https://github.com/emmanuelkyeremeh/MLOps-project/assets/71068159/fb1e1a87-f523-40b6-8a9a-92f6e9877719)
 
