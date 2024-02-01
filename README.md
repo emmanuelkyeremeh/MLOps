@@ -10,7 +10,6 @@
 
 ## Prefect Deployment
 
-
 - I created two MLflow runs using the Lasso model and XGBoost respectively
 
 
@@ -149,6 +148,7 @@ Lastly, I generated a test suite and report using evidently as shown in the code
 <br/>
 
 ![Screenshot (118)](https://github.com/emmanuelkyeremeh/MLOps-project/assets/71068159/fb1e1a87-f523-40b6-8a9a-92f6e9877719)
+
 
 <br/>
 
